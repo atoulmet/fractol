@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME = fractol
 
 SRC_PATH = srcs/
@@ -19,15 +18,15 @@ SRCS = julio.c put_string.c celtic.c burningship.c init_color.c zoom.c julia.c m
 
 OBJ_NAME = $(SRCS:.c=.o)
 
-OBJ_PATH = obj/
-OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+	OBJ_PATH = obj/
+	OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 SRC = $(addprefix $(SRC_PATH),$(SRCS))
 
-FLAGS = -Wall -Wextra -Werror 
+	FLAGS = -Wall -Werror -Wextra
 
-INC = -I ./includes/ -I./libft
+	INC = -I ./includes/ -I./libft
 
-LIB = -L minilibx -lmlx -framework OpenGL -framework AppKit -Llibft/ -lft
+	LIB = -L minilibx -lmlx -framework OpenGL -framework AppKit -Llibft/ -lft
 
 all : $(NAME)
 
@@ -36,14 +35,14 @@ $(NAME) : $(OBJ)
 	@gcc $(OBJ) $(INC) $(LIB) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_PATH)
-	@gcc -c $(FLAGS) $< -o $@ $(INC)
+		@mkdir -p $(OBJ_PATH)
+		@gcc -c $(FLAGS) $< -o $@ $(INC)
 
 clean :
-	@rm -rf $(OBJ_PATH)
+		@rm -rf $(OBJ)
 
 fclean : clean
-	@rm -rf $(NAME)
-	@make -C libft fclean
+		@rm -rf $(NAME)
+		@make -C libft fclean
 
 re : fclean all
